@@ -11,11 +11,11 @@ app.use(cors({
 }));
 
 app.use('/peer-api', (req, res, next) => {
-  req.headers['x-api-key'] = process.env.API_KEY;
+  req.headers['x-api-key'] = process.env.STAGING_API_KEY;
 
   next();
 }, createProxyMiddleware({
-  target: process.env.PROD_URL,
+  target: process.env.STAGING_URL,
   changeOrigin: true,
   pathRewrite: {
     '^/peer-api': '',
